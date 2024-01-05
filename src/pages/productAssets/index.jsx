@@ -47,7 +47,7 @@ function Assets() {
         </div>
         <div className="row">
           <div className="col-md-12 mt-3">
-            <table className="table table-bordered">
+            <table className="table table-striped table-hover">
               <thead>
                 <tr>
                   <th scope="col">ID</th>

@@ -47,7 +47,7 @@ function Products() {
         </div>
         <div className="row">
           <div className="col-md-12 mt-3">
-            <table className="table table-bordered">
+            <table className="table table-striped table-hover">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -55,7 +55,7 @@ function Products() {
                   <th scope="col">Name</th>
                   <th scope="col">Slug</th>
                   <th scope="col">Price</th>
-                  {/* <th scope="col">Assets</th> */}
+                  <th scope="col">Assets</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -67,7 +67,12 @@ function Products() {
                     <td>{product.name}</td>
                     <td>{product.slug}</td>
                     <td>{product.price}</td>
-                    {/* <td>{product.assets}</td> */}
+                    <td>
+                      {/* Melintasi array product.assets dan menampilkan gambar */}
+                      {product.assets.map((asset, assetIndex) => (
+                        <img key={assetIndex} src={asset.image} height={20} />
+                      ))}
+                    </td>
                     <td>
                       <Link
                         to={`/products/${product.id}/edit`}
