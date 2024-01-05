@@ -3,32 +3,32 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Assets() {
-  const [assets, setAssets] = useState([]);
+function Products() {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const getAssets = () => {
-      fetch("http://localhost:8000/api/assets")
+    const getProducts = () => {
+      fetch("http://localhost:8000/api/products")
         .then((res) => {
           return res.json();
         })
         .then((response) => {
           console.log(response.data);
-          setAssets(response.data);
+          setProducts(response.data);
         })
         .catch((error) => {
           console.log(error);
         });
     };
-    getAssets();
+    getProducts();
   }, []);
 
-  const deleteAssets = (id) => {
+  const deleteProducts = (id) => {
     axios
-      .delete("http://localhost:8000/api/assets/" + id)
+      .delete("http://localhost:8000/api/products/" + id)
       .then(function (response) {
         console.log(response.data);
-        alert("Category deleted successfully");
+        alert("Product deleted successfully");
       })
       .catch((error) => {
         console.log(error);
@@ -40,8 +40,8 @@ function Assets() {
       <div className="container">
         <div className="row">
           <div className="col-md-12 mt-3">
-            <Link to="/categories/create" className="btn btn-primary">
-              Create Assets
+            <Link to="/products/create" className="btn btn-primary">
+              Create Product
             </Link>
           </div>
         </div>
@@ -51,26 +51,32 @@ function Assets() {
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Product ID</th>
-                  <th scope="col">image</th>
+                  <th scope="col">Category ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Slug</th>
+                  <th scope="col">Price</th>
+                  {/* <th scope="col">Assets</th> */}
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {assets.map((assets, index) => (
+                {products.map((product, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{assets.product_id}</td>
+                    <td>{product.category_id}</td>
+                    <td>{product.name}</td>
+                    <td>{product.slug}</td>
+                    <td>{product.price}</td>
+                    {/* <td>{product.assets}</td> */}
                     <td>
-                      <img
-                        src={`http://127.0.0.1:8000/storage/${assets.image}`}
-                        alt=""
-                        height={50}
-                      />
-                    </td>
-                    <td>
+                      <Link
+                        to={`/products/${product.id}/edit`}
+                        className="btn btn-success mb-2"
+                      >
+                        Edit
+                      </Link>
                       <button
-                        onClick={() => deleteAssets(assets.id)}
+                        onClick={() => deleteProducts(product.id)}
                         className="btn btn-danger"
                       >
                         Delete
@@ -94,4 +100,4 @@ function Assets() {
   );
 }
 
-export default Assets;
+export default Products;

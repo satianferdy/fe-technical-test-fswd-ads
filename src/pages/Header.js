@@ -7,7 +7,7 @@ function Header() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
           <NavLink to="/" className="navbar-brand">
-            Cairocoders
+            FSWD-2
           </NavLink>
           <button
             className="navbar-toggler"
@@ -39,7 +39,7 @@ function Header() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/productassets" className="nav-link">
+                <NavLink to="/assets" className="nav-link">
                   Products-Assets
                 </NavLink>
               </li>

@@ -7,7 +7,7 @@ function Footer() {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mt-3">
-              <p>Copyright @2023 Cairocoders</p>
+              <p>Copyright @2024</p>
             </div>
           </div>
         </div>
